@@ -19,6 +19,9 @@ const Quiz = () => {
   const [quizStarted, setQuizStarted] = useState(false);
   const [isLastQuestion, setIsLastQuestion] = useState(false); // Add state to track if it's the last question
 
+  // Store all user scores in an array
+  const [userScores, setUserScores] = useState([]); 
+
   // Fetching questions from the server
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -70,20 +73,21 @@ const Quiz = () => {
     return () => clearTimeout(timer);
   }, [quizStarted, quizOver, currentQuestion]);
 
-  // Display loading panel for 5 seconds before showing a question
-  useEffect(() => {
-    if (currentQuestion) {
-      const loadingTimer = setTimeout(() => {
-        setIsLoading(false); 
-      }, 5000);
+  // // Display loading panel for 5 seconds before showing a question
+  // useEffect(() => {
+  //   if (currentQuestion) {
+  //     const loadingTimer = setTimeout(() => {
+  //       setIsLoading(false); 
+  //     }, 5000);
 
-      return () => clearTimeout(loadingTimer);
-    }
-  }, [currentQuestion]);
+  //     return () => clearTimeout(loadingTimer);
+  //   }
+  // }, [currentQuestion]);
 
   // Submitting the score when it's the last question
   useEffect(() => {
     if (isLastQuestion) {
+      console.log(userScores);
       handleSubmitScore(score);
     }
   }, [score, isLastQuestion]); // Submit score only when the score updates on the last question
@@ -97,13 +101,21 @@ const Quiz = () => {
     
     // If the answer is correct, update the score
     if (isCorrect) {
+      console.log("add score");
       setScore((prevScore) => prevScore + 1);
     }
 
-    // Check if it's the last question
-    if (questionIndex === questions.length - 1) {
-      setIsLastQuestion(true);
-    }
+    // Emit the answer to the server
+    socket.emit('answerQuestion', answer);
+    // setUserScores((prevScores) => [...prevScores, { username, score }]);
+//  Check if it's the last question
+if (questionIndex === questions.length - 1) {
+  console.log(questionIndex);
+  setIsLastQuestion(true);
+ // Add the score only if it's the last question
+ console.log(`Adding score for user: ${username}, Score: ${score}`);
+ setUserScores((prevScores) => [...prevScores, { username, score }]);
+}
   };
 
   // Handle moving to the next question or ending the quiz
@@ -116,21 +128,22 @@ const Quiz = () => {
       setIsLoading(true);
       socket.emit('getNextQuestion');
     } else {
-      setIsLastQuestion(true); // This triggers the score submission
+      // Set last question flag here
+       console.log('This is the last question.');
+        setIsLastQuestion(true); // This triggers the score submission
     }
   };
 
-  // Submitting the score to the server
-  const handleSubmitScore = async (finalScore) => {
+  
+  // Submit scores to the server when the quiz is over
+  const handleSubmitScore = async () => {
     try {
-      await axios.post('http://localhost:8080/api/scores/save', {
-        username,
-        score: finalScore, 
-      });
-      socket.emit('quizOver'); 
-      setQuizOver(true);
+      console.log(userScores);
+      await axios.post('http://localhost:8080/api/scores/save', userScores);
+      // socket.emit('quizOver');
+      console.log("All scores submitted successfully.");
     } catch (error) {
-      console.error('Error submitting score:', error.response?.data || error.message);
+      console.error('Error submitting scores:', error.response?.data || error.message);
     }
   };
 
@@ -142,10 +155,21 @@ const Quiz = () => {
     setQuestionIndex(0);
     setIsAnswered(false);
     setIsLoading(true);
-    socket.emit('joinQuiz'); 
-    socket.emit('requestQuizStart');
+   // Emit joinQuiz event with the username
+   socket.emit('joinQuiz', name);
+
+   // Request to start quiz if not already started
+   socket.emit('requestQuizStart');
+   
   };
 
+  // Submit score when the quiz is over
+  useEffect(() => {
+    if (quizOver) {
+      console.log(userScores);
+      handleSubmitScore(); // Submit all user scores when the quiz is over
+    }
+  }, [quizOver]); // Submit scores only when the quiz is over
   // Rendering quiz end page
   if (quizOver) {
     return (
