@@ -182,7 +182,7 @@ const Quiz = () => {
     <div className="quiz-container">
       {username ? (
         <>
-          <h1>Live Quiz</h1>
+          <h1 className='container text-2xl px-4 top-1'>Live Quiz</h1>
           {isLoading ? (
             <div className="loading-panel">
               <h2>Loading next question...</h2>

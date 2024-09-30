@@ -30,16 +30,17 @@ const StartPage = ({ onStart }) => {
   };
 
   return (
-    <div className="start-page">
-      <h1>Welcome to the Quiz!</h1>
+    <div className="start-page p-4 m-4 container">
+      <h1 className='text-white text-4xl p-4 container-fluid'>Welcome to the Quiz!</h1>
       <input
+      className='outline-none bg-none m-3 p-3 rounded-md'
         type="text"
         placeholder="Enter your name"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
       />
-     <button onClick={handleStart} disabled={!quizStarted}>
+     <button onClick={handleStart} disabled={!quizStarted} className='bg-blue-500 hover:bg-slate-200'>
     {quizStarted ? 'Join Quiz' : 'Waiting for Admin to Start...'}
 </button>
     </div>

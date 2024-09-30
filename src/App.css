@@ -1,15 +1,15 @@
 /* Reset some default styles */
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 
-body {
+/* body {
     font-family: "Times New Roman", Arial, sans-serif;
     background-color: #F5F5F5;
     color: #333;
-}
+} */
 
 /* Main container */
 .container {
@@ -56,6 +56,7 @@ button:hover {
 
 /* Question and options */
 .question {
+    color: white;
     font-size: 1.5rem;
     margin: 20px 0;
 }

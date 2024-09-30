@@ -35,9 +35,9 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <button onClick={handleDownload}>Download Quiz Results</button>
+    <div className='admin-dashboard'>
+      <h1 >Admin Dashboard</h1>
+      <button className='admin-dashboard-btn' onClick={handleDownload}>Download Quiz Results</button>
     </div>
   );
 };

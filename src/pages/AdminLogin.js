@@ -30,10 +30,11 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="admin-login">
-      <h2>Admin Login</h2>
+    <div className="admin-login container flex justify-center items-center m-10 mx-auto">
+      <h2 className='text-white text-3xl m-4 p-4'>Admin Login</h2>
       <form onSubmit={handleLogin}>
         <input
+        className='m-4 rounded-md p-4 outline-none text-black'
           type="text"
           placeholder="Username"
           value={username}
@@ -41,13 +42,16 @@ const AdminLogin = () => {
           required
         />
         <input
+        className='m-4 rounded-md p-4 outline-none text-black'
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" onClick={handleLogin}>Login</button>
+        <button type="submit" 
+        className='w-40 p-2 transition-all duration-500 '
+        onClick={handleLogin}>Login</button>
       </form>
       {error && <p className="error">{error}</p>}
     </div>

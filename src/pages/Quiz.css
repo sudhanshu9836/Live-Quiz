@@ -1,21 +1,32 @@
 /* src/pages/Quiz.css */
+body{
+  background-color: #040023;
+}
 .quiz-container {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
+    /* color: #007bff; */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
   
-  h1 {
-    color: #333;
+  .quiz-container h1 {
+    top: 0;
+    color: #fff;
+    align-self: center;
   }
   
-  h2 {
-    font-size: 1.5rem;
+   h2 {
+    font-weight: bold;
+    font-size: 2rem;
+    outline: #007bff;
+    border-color: #007bff;
+    color: white;
     margin-bottom: 20px;
+    align-self: center;
   }
   
   .options {
@@ -26,6 +37,7 @@
   }
   
   button {
+
     padding: 10px;
     font-size: 1.1rem;
     cursor: pointer;
@@ -33,26 +45,35 @@
     border: 1px solid #ccc;
     background-color: #fff;
     transition: background-color 0.3s ease;
+    /* margin: auto 50%;
+    width: 120px; */
   }
   
   button:hover {
     background-color: #007bff;
     color: white;
   }
+  button::selection:hover {
+    /* background-color: #007bff; */
+    color: white;
+  }
   
   button.correct {
     background-color: #28a745;
+    border-color: #28a745;
     color: white;
   }
   
   button.wrong {
     background-color: #dc3545;
+    border-color: #dc3545;
     color: white;
   }
   
   button:disabled {
-    background-color: #ccc;
+    /* background-color: #ccc; */
     cursor: not-allowed;
+    opacity: 0.7;
   }
   
   h3 {
@@ -64,4 +85,157 @@
     font-size: 1rem;
     color: #ff5733;
   }
+
+  .admin-start{
+    /* background-color: red; */
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin: 100px auto;
+
+    h2{
+      font-size: 30px;
+      padding: 12px;
+    }
+  }
   
+  .admin-dashboard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto;
+
+    h2{
+      font-size: 30px;
+      padding: 12px;
+    }
+  }
+
+  .admin-login,
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    input{
+      width: 100%;
+    }
+
+    button{
+      background-color: rgb(69, 122, 237);
+      outline: none;
+
+      
+    }
+
+    button:hover{
+      background-color: rgb(6, 84, 157);
+      outline: none;
+    }
+}
+
+.quiz-over,
+.loading-panel{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100px auto;
+}
+
+/* Reset some default styles */
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+/* body {
+    font-family: "Times New Roman", Arial, sans-serif;
+    background-color: #F5F5F5;
+    color: #333;
+} */
+
+/* Main container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  /* min-height: 100vh; */
+}
+
+/* Header styles */
+header {
+  background-color: #2D4B90;
+  color: #FFFFFF;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Input fields */
+input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Button styles */
+button {
+  background-color: #2D4B90;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #1A2D5D; /* Darker shade on hover */
+}
+
+/* Question and options */
+.question {
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: white !important;
+  font-size: 1.5rem;
+  margin: 20px 0;
+  padding: 6px;
+}
+
+.option {
+  display: block;
+  background-color: #FFCC00;
+  color: #2D4B90;
+  padding: 10px;
+  margin: 5px 0;
+  text-align: center;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.option:hover {
+  background-color: #e6b800; /*Darker yellow on hover*/
+}
+
+/* Score and message styles */
+.score {
+  font-size: 2.2rem;
+  margin: 10px 0;
+}
+
+.message {
+  color: #FF5733; /* Optional color for messages */
+  font-size: 2rem;
+}
+

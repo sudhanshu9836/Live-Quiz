@@ -19,9 +19,9 @@ const AdminStart = () => {
   };
 
   return (
-    <div className="admin-start">
-      <h2>Admin Control Panel</h2>
-      <button onClick={startQuiz}>Start Quiz</button>
+    <div className="admin-start flex-col justify-center ">
+      <h2 className='text-white self-center'>Admin Control Panel</h2>
+      <button className='self-center' onClick={startQuiz}>Start Quiz</button>
     </div>
   );
 };
