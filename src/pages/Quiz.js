@@ -73,18 +73,6 @@ const Quiz = () => {
     return () => clearTimeout(timer);
   }, [quizStarted, quizOver, currentQuestion]);
 
-  // // Display loading panel for 5 seconds before showing a question
-  // useEffect(() => {
-  //   if (currentQuestion) {
-  //     const loadingTimer = setTimeout(() => {
-  //       setIsLoading(false); 
-  //     }, 5000);
-
-  //     return () => clearTimeout(loadingTimer);
-  //   }
-  // }, [currentQuestion]);
-
-  // Submitting the score when it's the last question
   useEffect(() => {
     if (isLastQuestion) {
       console.log(userScores);
@@ -98,23 +86,33 @@ const Quiz = () => {
     setIsAnswered(true);
     
     const isCorrect = answer === currentQuestion.correctAnswer;
-    
+    let currentScore = score;
+  
     // If the answer is correct, update the score
     if (isCorrect) {
-      console.log("add score");
-      setScore((prevScore) => prevScore + 1);
+      setScore((prevScore) => {
+        currentScore = prevScore + 1;
+        return currentScore;
+      });
     }
 
     // Emit the answer to the server
     socket.emit('answerQuestion', answer);
-    // setUserScores((prevScores) => [...prevScores, { username, score }]);
-//  Check if it's the last question
-if (questionIndex === questions.length - 1) {
-  console.log(questionIndex);
-  setIsLastQuestion(true);
- // Add the score only if it's the last question
- console.log(`Adding score for user: ${username}, Score: ${score}`);
- setUserScores((prevScores) => [...prevScores, { username, score }]);
+
+// Add the user's score to the array after calculating the current score
+  setUserScores((prevScores) => {
+  // Ensure there's no duplicate entry for the same username
+  const updatedScores = prevScores.filter((user) => user.username !== username);
+  return [...updatedScores, { username, score: currentScore }];
+});
+//  // Check if it's the last question
+ if (questionIndex === questions.length - 1) {
+  // Emit the final score after the last question
+  setTimeout(() => {
+    console.log(`Submitting final score for user: ${username}, Score: ${score}`);
+    socket.emit('submitFinalScore', { username, score });
+    setUserScores((prevScores) => [...prevScores, { username, score }]);  // Update local state with final score
+  }, 100); // Adding a slight delay ensures the latest score state is used
 }
   };
 
@@ -133,13 +131,14 @@ if (questionIndex === questions.length - 1) {
         setIsLastQuestion(true); // This triggers the score submission
     }
   };
-
   
   // Submit scores to the server when the quiz is over
   const handleSubmitScore = async () => {
     try {
       console.log(userScores);
-      await axios.post('http://localhost:8080/api/scores/save', userScores);
+      await axios.post('http://localhost:8080/api/scores/save', 
+       userScores
+      );
       // socket.emit('quizOver');
       console.log("All scores submitted successfully.");
     } catch (error) {
