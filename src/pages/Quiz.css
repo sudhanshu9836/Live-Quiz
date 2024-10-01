@@ -1,6 +1,8 @@
 /* src/pages/Quiz.css */
 body{
-  background-color: #040023;
+  /* background: linear-gradient(to right bottom, hsl(213, 77%, 14%), hsl(202, 27%, 45%)); */
+  background-color: #1A2D5D;
+  height: 100%;
 }
 .quiz-container {
     max-width: 600px;
@@ -9,7 +11,7 @@ body{
     /* background-color: #f9f9f9; */
     /* color: #007bff; */
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
     text-align: center;
   }
   
@@ -17,6 +19,35 @@ body{
     top: 0;
     color: #fff;
     align-self: center;
+  }
+
+  .container{
+    top: 10px;
+    margin: 20px auto;
+    color: black;
+    background-color: #2D4B90;
+    box-shadow: #929090 2px 2px 2px;
+
+    button{
+      background-color: #007bff;
+      padding: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: transparent;
+      transition: all 0.3s ease;
+      /* margin: auto 50%;
+      width: 120px; */
+
+      :hover {
+        background-color: #007bff;
+        color: white;
+
+
+        
+      }
+    }
   }
   
    h2 {
@@ -36,45 +67,33 @@ body{
     margin-bottom: 20px;
   }
   
-  button {
-
-    padding: 10px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    transition: background-color 0.3s ease;
-    /* margin: auto 50%;
-    width: 120px; */
-  }
   
-  button:hover {
-    background-color: #007bff;
-    color: white;
-  }
-  button::selection:hover {
-    /* background-color: #007bff; */
-    color: white;
-  }
+  
+  
+  
   
   button.correct {
-    background-color: #28a745;
-    border-color: #28a745;
+    /* background-color: #28a745;
+    border-color: #28a745; */
     color: white;
   }
   
   button.wrong {
-    background-color: #dc3545;
-    border-color: #dc3545;
+    /* background-color: #dc3545;
+    border-color: #dc3545; */
     color: white;
   }
   
   button:disabled {
-    /* background-color: #ccc; */
+    background-color: transparent;
+    border: 2px solid white;
     cursor: not-allowed;
     opacity: 0.7;
+
+    
   }
+
+ 
   
   h3 {
     font-size: 1.2rem;
@@ -239,3 +258,14 @@ button:hover {
   font-size: 2rem;
 }
 
+alert{
+  background-color: #B0E0E6;
+  color: #000;
+  display: none;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  font-weight: bold;
+  top: 0;
+  position: absolute;
+}

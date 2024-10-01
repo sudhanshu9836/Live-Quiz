@@ -35,8 +35,8 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className='admin-dashboard'>
-      <h1 >Admin Dashboard</h1>
+    <div className='admin-dashboard container w-3/4 rounded-xl py-5 m-5'>
+      <h1 className='p-4 text-white font-bold text-3xl'>Admin Dashboard</h1>
       <button className='admin-dashboard-btn' onClick={handleDownload}>Download Quiz Results</button>
     </div>
   );

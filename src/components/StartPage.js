@@ -30,8 +30,8 @@ const StartPage = ({ onStart }) => {
   };
 
   return (
-    <div className="start-page p-4 m-4 container">
-      <h1 className='text-white text-4xl p-4 container-fluid'>Welcome to the Quiz!</h1>
+    <div className=" text-black start-page p-4 m-4 rounded-xl container ">
+      <h1 className='text-black text-4xl p-4 container-fluid'>Welcome to the Quiz!</h1>
       <input
       className='outline-none bg-none m-3 p-3 rounded-md'
         type="text"
