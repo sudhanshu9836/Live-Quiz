@@ -22,7 +22,7 @@ const AdminStart = () => {
   return (
     <div className="admin-start flex-col justify-center container p-8 w-3/4 rounded-xl text-blue-700">
       <h2 className='text-white self-center'>Admin Control Panel</h2>
-      <button className='self-center bg-transparent border-1 border-solid border-white hover:bg-blue-900' onClick={startQuiz}>Start Quiz</button>
+      <button className=' button self-center bg-transparent  hover:bg-blue-900 p-6' onClick={startQuiz}>Start Quiz</button>
     </div>
   );
 };
