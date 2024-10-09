@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   const handleDownload = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await axios.get('http://localhost:8080/api/admin/download-scores', {
+      const response = await axios.get('https://live-quiz-backend-pvjf.onrender.com/api/admin/download-scores', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

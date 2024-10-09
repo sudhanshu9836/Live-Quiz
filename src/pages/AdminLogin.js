@@ -13,7 +13,7 @@ const AdminLogin = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/api/admin/login', {
+      const response = await axios.post('https://live-quiz-backend-pvjf.onrender.com/api/admin/login', {
         username,
         password,
       });

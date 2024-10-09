@@ -26,7 +26,7 @@ const Quiz = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/questions');
+        const response = await axios.get('https://live-quiz-backend-pvjf.onrender.com/api/questions');
         setQuestions(response.data);
       } catch (error) {
         console.error('Error fetching questions:', error);
