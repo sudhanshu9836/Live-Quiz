@@ -31,7 +31,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="admin-login w-3/4 rounded-xl mx-3 my-auto container flex justify-center items-center m-10 mx-auto">
+    <div className="admin-login w-3/4 rounded-xl  my-auto container flex justify-center items-center m-10 mx-auto">
       <h2 className='text-white text-3xl m-4 p-4'>Admin Login</h2>
       <form onSubmit={handleLogin}>
         <input
@@ -51,7 +51,7 @@ const AdminLogin = () => {
           required
         />
         <button type="submit" 
-        className='w-40 p-1 mt-4 transition-all duration-500 font-bold -translate-y-1 transition-all duration-500 '
+        className='w-40 p-1 mt-4  font-bold -translate-y-1 transition-all duration-500 '
         onClick={handleLogin}>Login</button>
       </form>
       {error && <p className="error font-bold">{error}</p>}
