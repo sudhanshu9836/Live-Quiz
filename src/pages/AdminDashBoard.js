@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import {  useNavigate } from 'react-router-dom';
+import AdminStart from './AdminStart.js';
+
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -9,7 +11,7 @@ const AdminDashboard = () => {
     // Check if the admin is authenticated
     const token = localStorage.getItem('adminToken');
     if (!token) {
-      navigate('/admin-login'); // Redirect to login if no token is found
+      navigate('/admin/login'); // Redirect to login if no token is found
     }
   }, [navigate]);
 
@@ -35,10 +37,13 @@ const AdminDashboard = () => {
   };
 
   return (
+    <>
+      <AdminStart/> 
     <div className='admin-dashboard container w-3/4 rounded-xl py-5 m-5'>
       <h1 className='p-4 text-white font-bold text-3xl'>Admin Dashboard</h1>
       <button className='admin-dashboard-btn' onClick={handleDownload}>Download Quiz Results</button>
     </div>
+    </>
   );
 };
 

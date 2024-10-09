@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
+import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 
 // Establish connection to the server via Socket.IO
 const socket = io('http://localhost:8080');
@@ -8,11 +10,18 @@ const socket = io('http://localhost:8080');
 const AdminStart = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Check if the admin is authenticated
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+      navigate('/admin/login'); // Redirect to login if no token is found
+    }
+  }, [navigate]);
   // Function to start the quiz
   const startQuiz = () => {
     // Emit the 'startQuiz' event to notify server that the quiz should start
     socket.emit('startQuiz');
-    alert('Quiz has been started!');
+    toast.success('Quiz has been started!');
     
 
     // Navigate to the main quiz page after starting the quiz

@@ -11,9 +11,8 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path='/start' element={<AdminStart/>} />
         <Route path='/' element={<Quiz />} />
-        <Route path="/admin-login" element={<AdminLogin/>} />
+        <Route path="/admin/login" element={<AdminLogin/>} />
         <Route path='/admin' element={<AdminDashBoard />} />
         </Routes>
       </div>
