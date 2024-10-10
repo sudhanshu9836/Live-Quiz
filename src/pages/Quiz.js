@@ -5,7 +5,7 @@ import './Quiz.css';
 import QuizOver from '../components/QuizOver';
 import StartPage from '../components/StartPage';
 
-const socket = io('http://localhost:8080');
+const socket = io('https://live-quiz-backend-pvjf.onrender.com');
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
