@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 
 // Establish connection to the server via Socket.IO
-const socket = io('http://localhost:8080');
+const socket = io('https://live-quiz-backend-pvjf.onrender.com');
 
 const AdminStart = () => {
   const navigate = useNavigate();
