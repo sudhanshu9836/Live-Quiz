@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 
 // Establish socket connection
-const socket = io('http://localhost:8080');
+const socket = io('https://live-quiz-backend-pvjf.onrender.com');
 
 const StartPage = ({ onStart }) => {
   const [username, setUsername] = useState('');

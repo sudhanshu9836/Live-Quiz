@@ -136,7 +136,7 @@ const Quiz = () => {
   const handleSubmitScore = async () => {
     try {
       console.log(userScores);
-      await axios.post('http://localhost:8080/api/scores/save', 
+      await axios.post('https://live-quiz-backend-pvjf.onrender.com/api/scores/save', 
        userScores
       );
       // socket.emit('quizOver');
